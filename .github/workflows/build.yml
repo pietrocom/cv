@@ -29,8 +29,8 @@ jobs:
           root_file: |
             cv_en.tex
             cv_ptbr.tex
-          # Using lualatex engine as it's modern and handles fonts/unicode well
-          latex_engine: lualatex
+          # Using lualatex as the compiler
+          compiler: lualatex
 
       # Step 3: Deploy the generated PDFs and the index.html to the 'build' branch
       # This branch is then used by GitHub Pages to serve your site.
