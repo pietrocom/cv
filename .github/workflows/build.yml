@@ -1,57 +1,48 @@
-# With some help from: https://gist.github.com/dgerosa/2e1f47a39180f39bde848e38243efa94
+# A simplified and updated GitHub Action to compile two LaTeX resumes and deploy them with a landing page.
 
-name: build
-on: [push]
+name: Build and Deploy Resumes
+
+on:
+  # Run this workflow only when changes are pushed to the 'main' branch
+  push:
+    branches:
+      - main
+
 jobs:
-  build:
+  build_and_deploy:
     runs-on: ubuntu-latest
-    env:
-      # Edit here with the names of your latex file and directory (can use ".")
-      DIR: .
-      FILE: cv
+    # Grant permissions for the workflow to write to the repository (for deploying to the 'build' branch)
+    permissions:
+      contents: write
+      
     steps:
-      - name: Set up Git repository
+      # Step 1: Check out the repository content (your .tex files, index.html, etc.)
+      - name: Checkout repository
         uses: actions/checkout@v4
-      - name: cv
-        uses: dante-ev/latex-action@latest
+
+      # Step 2: Compile both LaTeX documents into PDFs
+      # This action will find both .tex files and compile them, creating cv_en.pdf and cv_ptbr.pdf
+      - name: Compile LaTeX documents
+        uses: xu-cheng/latex-action@v3
         with:
-          root_file: ${{ env.FILE }}
-          working_directory: ${{ env.DIR }}
-      - name: move
-        run: mkdir -p github_artifacts && mv ${{ env.DIR }}/${{ env.FILE }}.pdf ./github_artifacts/
-      - name: Upload pdf as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ env.FILE }}.pdf
-          path: ./github_artifacts
-  deploy:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with:
-          path: github_artifacts
-      - name: move
-        run: mkdir -p github_deploy && mv github_artifacts/*/* github_deploy
-      - name: deploy on orphan branch
+          # List all the main .tex files you want to compile
+          root_file: |
+            cv_en.tex
+            cv_ptbr.tex
+          # Using lualatex engine as it's modern and handles fonts/unicode well
+          latex_engine: lualatex
+
+      # Step 3: Deploy the generated PDFs and the index.html to the 'build' branch
+      # This branch is then used by GitHub Pages to serve your site.
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
+          # The token is provided automatically by GitHub
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./github_deploy
+          # The branch to which the files will be deployed
           publish_branch: build
+          # The directory to deploy. '.' means the current directory, which now contains
+          # cv_en.pdf, cv_ptbr.pdf, and your checked-out index.html.
+          publish_dir: .
+          # force_orphan creates a clean history on the deployment branch each time
           force_orphan: true
-          enable_jekyll: true
-  copy-index-to-build:
-    needs: [deploy]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Copy To Branches Action
-        uses: planetoftheweb/copy-to-branches@v1.3
-        env:
-          key: main
-          files: index.html CNAME
