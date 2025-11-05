@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pietro Comin's Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --cor-primaria: #2c3c64; 
+            --cor-secundaria: #91E8DD; 
+            --cor-terciaria: #ebc661;
+            --cor-fundo: #273557; 
+            --cor-branca: rgba(255, 255, 255, 1);
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: var(--cor-fundo);
+            color: var(--cor-branca);
+            padding: 20px 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px 60px;
+            background-color: rgba(44, 60, 100, 0.5);
+            border-radius: 8px;
+            border-left: 4px solid var(--cor-terciaria);
+            max-width: 600px; 
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin-top: 0;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: var(--cor-branca);
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: var(--cor-terciaria);
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 30px; 
+        }
+        
+        .action-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px; /* Espaço entre o botão e o link de download */
+        }
+
+        .button {
+            display: block;
+            text-decoration: none;
+            color: var(--cor-branca);
+            background-color: transparent;
+            padding: 16px 30px;
+            border-radius: 5px;
+            border: 2px solid var(--cor-terciaria);
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            width: 100%;
+            max-width: 250px; /* Largura máxima para os botões */
+        }
+
+        .button:hover {
+            background-color: var(--cor-terciaria);
+            color: var(--cor-fundo);
+        }
+
+        .download-link {
+            color: var(--cor-secundaria);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0.8;
+            transition: opacity 0.2s ease, color 0.2s ease;
+        }
+
+        .download-link:hover {
+            opacity: 1;
+            color: var(--cor-branca);
+            text-decoration: underline;
+        }
+
+        .download-link i {
+            margin-right: 6px;
+        }
+
+
+        @media (min-width: 600px) {
+            .button-group {
+                flex-direction: row;
+                justify-content: center;
+                align-items: flex-start; /* Alinha os itens no topo */
+            }
+            .action-item {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pietro Comin</h1>
+        <p>Resume / CV</p>
+        <div class="button-group">
+
+            <div class="action-item">
+                <a href="cv_en.pdf" class="button" target="_blank">View in English</a>
+                <a href="cv_en.pdf" class="download-link" download="Pietro_Comin_CV_EN.pdf">
+                    <i class="fas fa-download"></i>or download
+                </a>
+            </div>
+            
+            <div class="action-item">
+                <a href="cv_ptbr.pdf" class="button" target="_blank">Ver em Português</a>
+                <a href="cv_ptbr.pdf" class="download-link" download="Pietro_Comin_CV_PTBR.pdf">
+                    <i class="fas fa-download"></i>ou baixe aqui
+                </a>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
