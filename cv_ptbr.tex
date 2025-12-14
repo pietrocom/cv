@@ -1,0 +1,188 @@
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%   CV Template (Baseado na versão em Inglês)
+%   O preâmbulo completo da versão em inglês foi copiado para garantir formatação idêntica.
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------
+%   DOCUMENT DEFINITION
+%----------------------------------------------------------------------------------------
+\documentclass[a4paper,12pt]{article}
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES (Preâmbulo completo da versão em Inglês)
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip}    
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}               
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+% \addbibresource{citations.bib} % Você pode descomentar se for usar um .bib
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+% job listing environments (copiado da versão em Inglês)
+\newenvironment{jobshort}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    }
+    {
+    }
+
+\newenvironment{joblong}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    \begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
+    }
+    {
+    \end{itemize}
+    \end{minipage}    
+    }
+
+%----------------------------------------------------------------------------------------
+%   BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty} 
+
+%----------------------------------------------------------------------------------------
+%   CABEÇALHO
+%----------------------------------------------------------------------------------------
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\Huge{Pietro Comin} \\[7.5pt]
+\href{https://github.com/pietrocom}{\raisebox{-0.05\height}\faGithub\ pietrocom} \ $|$ \ 
+\href{https://linkedin.com/in/pietro-comin}{\raisebox{-0.05\height}\faLinkedin\ Pietro Comin} \ $|$ \ 
+\href{https://pietrocom.github.io/}{\raisebox{-0.05\height}\faGlobe \ pietrocom.github.io} \\
+\href{mailto:pietro.comin10@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ pietro.comin10@gmail.com} \ $|$ \ 
+\href{tel:+55(41)991871006}{\raisebox{-0.05\height}\faMobile \ +55 (41) 99187-1006} \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%   RESUMO
+%----------------------------------------------------------------------------------------
+\section{Resumo}
+Estudante de Ciência da Computação (UFPR) com foco em Inteligência Artificial e visão de produto. Pesquisador de Iniciação Científica em Deep Learning, aplicando Redes Neurais Convolucionais (CNNs) para análise de funções de ativação. Busco uma oportunidade de estágio para desenvolver soluções de IA de ponta e contribuir para o ciclo de vida completo do produto, da concepção técnica à entrega de valor.
+
+%----------------------------------------------------------------------------------------
+%   EXPERIÊNCIA (Dividida em duas seções, como no CV em inglês)
+%----------------------------------------------------------------------------------------
+
+% Corresponde a "Work Experience"
+\section{Experiência Profissional}
+
+\begin{joblong}{Membro da Diretoria Administrativo-Financeira}{Abr 2024 - Dez 2024}
+\item \textbf{ECOMP - Empresa Júnior de Consultoria em Informática}, Curitiba, Brasil
+\item Liderei uma iniciativa de pesquisa sobre estratégias de investimento financeiro, apresentando um estudo de viabilidade para otimizar a alocação de capital.
+\item Analisei contratos de projetos e fluxo de caixa para apoiar o planejamento financeiro estratégico da diretoria.
+\end{joblong}
+
+% Corresponde a "Research Experience"
+\section{Experiência de Pesquisa}
+
+\begin{joblong}{Pesquisador de Iniciação Científica - Deep Learning}{Ago 2024 - Presente}
+\item \textbf{Universidade Federal do Paraná (UFPR)}, Curitiba, Brasil
+\item Investigando o impacto do ponto de não-diferenciabilidade da função ReLU na dinâmica de treinamento e performance de redes neurais.
+\item Desenvolvendo e treinando CNNs nos datasets MNIST e FashionMNIST para analisar o fluxo de gradiente, utilizando Python e PyTorch.
+\end{joblong}
+
+ %----------------------------------------------------------------------------------------
+%   PROJETOS (Formato de tabela corrigido)
+%----------------------------------------------------------------------------------------
+\section{Projetos}
+
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{Shooter Born in Heaven (Engine de Jogo 2D)} & \hfill \textbf{C \& Allegro 5} \\
+\multicolumn{2}{@{}X@{}}{
+Desenvolvi um jogo Run 'n Gun do zero ($>$50 hrs), com renderizador de scroll parallax, animações por máquina de estados e uma IA de chefe multi-fase.
+} \\
+\end{tabularx}
+
+\vspace{0.5em} % Espaço entre projetos (como no CV em inglês)
+
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{Processador Vetorial Baseado em MIPS} & \hfill \textbf{Arquitetura de Computadores} \\
+\multicolumn{2}{@{}X@{}}{
+Projetei e implementei um processador MIPS simplificado, desenvolvendo a decodificação de sinais de controle para operações essenciais da interface hardware-software.
+} \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%   HONRAS E PRÊMIOS (Seção separada, como no CV em inglês)
+%----------------------------------------------------------------------------------------
+\section{Honras e Prêmios}
+
+\begin{tabularx}{\linewidth}{@{}l X r@{}}
+\textbf{Prêmio de Mérito} & National High School Model United Nations (NHSMUN) & \textit{New York, 2022} \\
+\textbf{Cálculo II Honors} & Aulas de aprofundamento em cálculo II & \textit{2024} \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%   FORMAÇÃO ACADÊMICA (Seção separada, como no CV em inglês)
+%----------------------------------------------------------------------------------------
+\section{Formação Acadêmica}
+
+\begin{tabularx}{\linewidth}{@{}l X r@{}}
+2024 - 2027 (Prev.) & \textbf{Universidade Federal do Paraná (UFPR)} & \textit{Curitiba, Brasil} \\
+& \textit{Bacharelado em Ciência da Computação} & \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%   COMPETÊNCIAS (Já estava correto, mantido)
+%----------------------------------------------------------------------------------------
+\section{Competências}
+
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{Linguagens} & Python, C, Java, LaTeX \\
+\textbf{IA/ML} & PyTorch, Scikit-learn, Pandas, NumPy, CNNs, Teoria de Deep Learning \\
+\textbf{Ferramentas de Dev} & Git, GitHub, Linux, Makefiles, GDB, logisim-evolution \\
+\textbf{Idiomas} & Português (Nativo), Inglês (Fluente, C1), Espanhol (Básico)\\
+\end{tabularx}
+
+\vfill
+\center{\footnotesize Última atualização: \today}
+
+\end{document}

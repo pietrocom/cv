@@ -1,0 +1,236 @@
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%	The MIT License (MIT)
+%
+%	Copyright (c) 2021 Jitin Nair
+%
+%	Permission is hereby granted, free of charge, to any person obtaining a copy
+%	of this software and associated documentation files (the "Software"), to deal
+%	in the Software without restriction, including without limitation the rights
+%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%	copies of the Software, and to permit persons to whom the Software is
+%	furnished to do so, subject to the following conditions:
+%	
+%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+%	THE SOFTWARE.
+%	
+%
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT DEFINITION
+%----------------------------------------------------------------------------------------
+
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper,12pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% % fontspec allows you to use TTF/OTF fonts directly
+% \usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+
+% % modified for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip} 	
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%debug page outer frames
+%\usepackage{showframe}
+
+
+% job listing environments
+\newenvironment{jobshort}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    }
+    {
+    }
+
+\newenvironment{joblong}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    \begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
+    }
+    {
+    \end{itemize}
+    \end{minipage}    
+    }
+
+
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty} 
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+% \begin{tabularx}{\linewidth}{ @{}X X@{} }
+% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
+% \raisebox{-0.05\height}\faGithub\ username \ | \
+% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
+% \end{tabularx}
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\Huge{Pietro Comin} \\[7.5pt]
+\href{https://github.com/pietrocom}{\raisebox{-0.05\height}\faGithub\ pietrocom} \ $|$ \ 
+\href{https://linkedin.com/in/pietro-comin}{\raisebox{-0.05\height}\faLinkedin\ Pietro Comin} \ $|$ \ 
+\href{https://pietrocom.github.io/}{\raisebox{-0.05\height}\faGlobe \ pietrocom.github.io} \\
+\href{mailto:pietro.comin10@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ pietro.comin10@gmail.com} \ $|$ \ 
+\href{tel:+55(41)991871006}{\raisebox{-0.05\height}\faMobile \ +55 (41) 99187-1006} \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+% EXPERIENCE SECTIONS
+%----------------------------------------------------------------------------------------
+
+%Interests/ Keywords/ Summary
+\section{Summary}
+Computer Science student (UFPR) with a focus on Artificial Intelligence and product vision. Undergraduate Researcher in Deep Learning, applying Convolutional Neural Networks (CNNs) to analyze activation functions. Seeking an internship opportunity to develop cutting-edge AI solutions and contribute to the full product lifecycle, from technical conception to user value delivery.
+
+%Experience
+\section{Work Experience}
+
+\begin{joblong}{Finance \& Administration Board Member}{Apr 2024 - Dec 2024}
+\item \textbf{ECOMP - Junior Enterprise in Computing}, Curitiba, Brazil
+\item Led a research initiative on financial investment strategies, presenting a feasibility study to the board aimed at optimizing the organization's capital allocation.
+\item Analyzed project contracts and cash flow data to support the directorate's strategic financial planning.
+\end{joblong}
+
+%Research Experience
+\section{Research Experience}
+
+\begin{joblong}{Undergraduate Researcher - Deep Learning}{Aug 2024 - Present}
+\item \textbf{Federal University of Paraná (UFPR)}, Curitiba, Brazil
+\item Investigating the impact of the ReLU activation function's non-differentiability point on neural network training dynamics and performance.
+\item Developing and training Convolutional Neural Networks (CNNs) on the MNIST and FashionMNIST datasets to analyze gradient flow during backpropagation, utilizing Python.
+\end{joblong}
+
+ %----------------------------------------------------------------------------------------
+%   PROJECTS - COMPACT VERSION
+%----------------------------------------------------------------------------------------
+\section{Projects}
+
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{Shooter Born in Heaven (2D Game Engine)} & \hfill \textbf{C \& Allegro 5} \\
+\multicolumn{2}{@{}X@{}}{
+Engineered a complete Run 'n Gun game (50 hrs), featuring a parallax scrolling renderer, state-machine animations, and an advanced, multi-phase boss AI.
+} \\
+\end{tabularx}
+
+\vspace{0.5em} % Adds a little space between projects
+
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{MIPS-based Vector Processor} & \hfill \textbf{Computer Architecture} \\
+\multicolumn{2}{@{}X@{}}{
+Designed and implemented from scratch a simplified MIPS vector processor, contributing to gain of experience in the hardware-software interface and low-level computer organization.
+} \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%   HONORS & AWARDS
+%----------------------------------------------------------------------------------------
+\section{Honors \& Awards}
+
+\begin{tabularx}{\linewidth}{@{}l X r@{}}
+\textbf{Award of Merit} & National High School Model United Nations (NHSMUN) & \textit{New York, 2022} \\
+\textbf{Calculus II Honors} & Indepth calculus II lessons & \textit{2024} \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%   EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+
+\begin{tabularx}{\linewidth}{@{}l X r@{}}
+2024 - 2027 (Expected) & \textbf{Federal University of Paraná (UFPR)} & \textit{Curitiba, Brazil} \\
+& \textit{Bachelor of Science in Computer Science} & \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%   SKILLS
+%----------------------------------------------------------------------------------------
+\section{Skills}
+
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{Languages} & Python, C, Java, LaTeX \\
+\textbf{AI/ML} & PyTorch, Scikit-learn, Pandas, NumPy, CNNs, Deep Learning Theory \\
+\textbf{Developer Tools} & Git, GitHub, Linux, Makefiles, GDB, logisim-evolution \\
+\textbf{Languages (Spoken)} & Portuguese (Native), English (Fluent, C1), Spanish (Basic)\\
+\end{tabularx}
+
+\vfill
+\center{\footnotesize Last updated: \today}
+
+\end{document}
+
